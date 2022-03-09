@@ -1,8 +1,8 @@
 //
-//  selection-sort.cpp
-//  selection-sort-cpp
+//  bubble-sort.cpp
+//  bubble-sort-cpp
 //
-//  Created by Matt Rathbun on 3/5/22.
+//  Created by Matt Rathbun on 3/8/22.
 //
 
 #include <iostream>
@@ -10,7 +10,6 @@
 int main(int argc, const char * argv[]) {
     int arrayValue = 0;
     int arraySize = 0;
-    int min = 0;
     int temp = 0;
     
     while (std::cout << "Enter array size between 1 and 10: " && (!(std::cin >> arraySize) || arraySize < 1 || arraySize > 10)) {
@@ -42,27 +41,24 @@ int main(int argc, const char * argv[]) {
     }
 
     std::cout << std::endl << std::endl;
-
+    
     for (int k = 0; k <= arraySize - 2; k++) {
-        min = k;
-
-        for (int l = k + 1; l <= arraySize - 1; l++) {
-            if (unsortedArray[l] < unsortedArray[min]) {
-                min = l;
+        std::cout << "ITERATION " << k + 1 << std::endl;
+        
+        for (int l = 0; l <= arraySize - 2 - k; l++) {
+            if (unsortedArray[l + 1] < unsortedArray[l]) {
+                temp = unsortedArray[l + 1];
+                unsortedArray[l + 1] = unsortedArray[l];
+                unsortedArray[l] = temp;
+                
+                std::cout << "SWAP POSITIONS " << l + 1 << " AND " << l <<std::endl;
             }
         }
 
-        temp = unsortedArray[k];
-        unsortedArray[k] = unsortedArray[min];
-        unsortedArray[min] = temp;
+        for (int m = 0; m < arraySize; m++) {
+            std::cout << unsortedArray[m];
 
-        std::cout << "ITERATION " << k + 1 << std::endl;
-        std::cout << "SWAP POSITIONS " << k << " AND " << min << std::endl;
-
-        for (int k = 0; k < arraySize; k++) {
-            std::cout << unsortedArray[k];
-
-            if (k < arraySize - 1) {
+            if (m < arraySize - 1) {
                 std::cout << ", ";
             }
         }
