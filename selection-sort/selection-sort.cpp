@@ -1,11 +1,13 @@
 //
 //  selection-sort.cpp
-//  selection-sort-cpp
+//  selection-sort
 //
 //  Created by Matt Rathbun on 3/5/22.
 //
 
 #include <iostream>
+
+using namespace std;
 
 int main(int argc, const char * argv[]) {
     int arrayValue = 0;
@@ -13,35 +15,35 @@ int main(int argc, const char * argv[]) {
     int min = 0;
     int temp = 0;
     
-    while (std::cout << "Enter array size between 1 and 10: " && (!(std::cin >> arraySize) || arraySize < 1 || arraySize > 10)) {
-        std::cin.clear(); //clear bad input flag
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); //discard input
-        std::cout << "Invalid array size" << std::endl;
+    while (cout << "Enter array size between 1 and 10: " && (!(cin >> arraySize) || arraySize < 1 || arraySize > 10)) {
+        cin.clear(); //clear bad input flag
+        cin.ignore(numeric_limits<streamsize>::max(), '\n'); //discard input
+        cout << "Invalid array size" << endl;
     }
     
     int unsortedArray[arraySize];
     
     for (int i = 0; i < arraySize; i++) {
-        while (std::cout << "Enter array value " << i + 1 << ": " && !(std::cin >> arrayValue)) {
-            std::cin.clear(); //clear bad input flag
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); //discard input
-            std::cout << "Invalid array value" << std::endl;
+        while (cout << "Enter array value " << i + 1 << ": " && !(cin >> arrayValue)) {
+            cin.clear(); //clear bad input flag
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); //discard input
+            cout << "Invalid array value" << endl;
         }
         
         unsortedArray[i] = arrayValue;
     }
 
-    std::cout << std::endl << "INITIAL ARRAY" << std::endl;
+    cout << endl << "INITIAL ARRAY" << endl;
 
     for (int j = 0; j < arraySize; j++) {
-        std::cout << unsortedArray[j];
+        cout << unsortedArray[j];
         
         if (j < arraySize - 1) {
-            std::cout << ", ";
+            cout << ", ";
         }
     }
 
-    std::cout << std::endl << std::endl;
+    cout << endl << endl;
 
     for (int k = 0; k <= arraySize - 2; k++) {
         min = k;
@@ -56,18 +58,18 @@ int main(int argc, const char * argv[]) {
         unsortedArray[k] = unsortedArray[min];
         unsortedArray[min] = temp;
 
-        std::cout << "ITERATION " << k + 1 << std::endl;
-        std::cout << "SWAP POSITIONS " << k << " AND " << min << std::endl;
+        cout << "ITERATION " << k + 1 << endl;
+        cout << "SWAP POSITIONS " << k << " AND " << min << endl;
 
         for (int k = 0; k < arraySize; k++) {
-            std::cout << unsortedArray[k];
+            cout << unsortedArray[k];
 
             if (k < arraySize - 1) {
-                std::cout << ", ";
+                cout << ", ";
             }
         }
 
-        std::cout << std::endl << std::endl;
+        cout << endl << endl;
     }
 
     return 0;
